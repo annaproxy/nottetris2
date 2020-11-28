@@ -6,6 +6,13 @@ function gameBmulti_load()
 	gamestate = "gameBmulti"
 	gamestarted = false
 	
+	-- Handy keys for non-numpad keyboard  
+	key_p1_clockwise = "2" -- default: h
+	key_p1_counter = "1" -- default: g
+
+	key_p2_clockwise = "m" -- default : numpad2
+	key_p2_counter = "n" -- default: numpad1
+
 	beeped = {false, false, false}
 	
 	--figure out the multiplayer scale
@@ -330,12 +337,12 @@ function gameBmulti_update(dt)
 	elseif gamestate == "gameBmulti" then
 		--PLAYER 1--
 		if p1fail == false then
-			if love.keyboard.isDown( "h" ) then --clockwise
+			if love.keyboard.isDown( key_p1_clockwise ) then --clockwise
 				if tetribodiesp1[counterp1]:getAngularVelocity() < 3 then
 					tetribodiesp1[counterp1]:applyTorque( 70 )
 				end
 			end
-			if love.keyboard.isDown( "g" ) then --counterclockwise
+			if love.keyboard.isDown( key_p1_counter ) then --counterclockwise
 				if tetribodiesp1[counterp1]:getAngularVelocity() > -3 then
 					tetribodiesp1[counterp1]:applyTorque( -70 )
 				end
@@ -366,12 +373,12 @@ function gameBmulti_update(dt)
 		end
 		--PLAYER 2--
 		if p2fail == false then
-			if love.keyboard.isDown( "kp2" ) then --clockwise
+			if love.keyboard.isDown( key_p2_clockwise ) then --clockwise
 				if tetribodiesp2[counterp2]:getAngularVelocity() < 3 then
 					tetribodiesp2[counterp2]:applyTorque( 70 )
 				end
 			end
-			if love.keyboard.isDown( "kp1" ) then --counterclockwise
+			if love.keyboard.isDown( key_p2_counter ) then --counterclockwise
 				if tetribodiesp2[counterp2]:getAngularVelocity() > -3 then
 					tetribodiesp2[counterp2]:applyTorque( -70 )
 				end
